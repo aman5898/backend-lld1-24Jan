@@ -5,6 +5,20 @@ public class Student {
     int age;
     protected double psp;
     public String batch;
+    Exam exam;
+
+    public static int noOfStudents = 0;
+
+    static {
+//        Api call
+//        dbconnection =
+        System.out.println("Testing Static Block");
+//        Student st = new Student();
+    }
+
+    {
+        System.out.println("non Static Block");
+    }
 
 
 //   1 Student st = new Student();
@@ -14,13 +28,21 @@ public class Student {
 //    1. Name as Class name
 //    2. no return type
 //    Initialise data members
-//    public Student(){
-//        name = "Abhilash";
-//        age = 20;
-//        psp = 30;
-//        batch = "xyz";
-//
-//    }
+    public Student(){
+        noOfStudents++;
+    }
+
+    public static void swap(Student s1, Student s2){
+        Student temp = s1;
+        s1 = s2;
+        s2 = temp;
+    }
+
+    public static void swapPSP(Student s1, Student s2){
+        double temp = s1.psp;
+        s1.psp = s2.psp;
+        s2.psp = temp;
+    }
 
 
 //    public Student(String name2, int a, double b, String c){
@@ -30,6 +52,22 @@ public class Student {
 //        batch = c;
 //
 //    }
+
+    public Student(String name, int age){
+        this.name = name;
+        this.age = age;
+        this.exam = new Exam(1, 90);
+
+    }
+
+    public Student(Student other){
+        this.name = other.name;
+        this.age = other.age;
+        this.psp = other.psp;
+        this.exam = new Exam(other.exam);
+    }
+
+
 
     void print(){
         System.out.println("Name"+ name);
@@ -42,4 +80,14 @@ public class Student {
     String getName(){
         return this.name;
     }
+
+    static void PrintStatic(){
+        System.out.println("Print Static Function");
+    }
+
+    static void printNoOfStudents(){
+//        System.out.println(noOfStudents);
+//        System.out.println(this.batch);
+    }
+
 }

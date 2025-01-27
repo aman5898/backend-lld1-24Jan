@@ -2,8 +2,8 @@ package org.scaler.accessmodifiers;
 
 import org.scaler.IntroToOops.Student;
 
-public class StudentChild extends Student {
+public class StudentChild  {
     public void Test(){
-        System.out.println(psp);
+        System.out.println();
     }
 }
