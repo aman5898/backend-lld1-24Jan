@@ -2,6 +2,14 @@ package org.scaler.introToThreads;
 
 public class Client {
     public static void main(String[] args) throws InterruptedException {
+        for(int i=1;i<=100000;i++){
+            NumberPrinter numberPrinter = new NumberPrinter(i);
+            Thread thread = new Thread(numberPrinter);
+//            thread.run();
+            thread.start();
+        }
+
+
 ////        HelloWorldPrinter h = new HelloWorldPrinter();
 //        Runnable h = new HelloWorldPrinter();
 //        Thread t = new Thread(h);
@@ -30,8 +38,8 @@ public class Client {
 //            thread.start();
 //        }
 
-        Thread t = new HelloWorldPrinter2();
-        t.start();
+//        Thread t = new HelloWorldPrinter2();
+//        t.start();
 
 
     }
