@@ -18,6 +18,7 @@ public class Sorter implements Callable<List<Integer>> {
 
     @Override
     public List<Integer> call() throws Exception {
+        System.out.println(Thread.currentThread().getName()+" "+arrayToSort);
         if(arrayToSort.size()<=1){
             return arrayToSort;
         }
