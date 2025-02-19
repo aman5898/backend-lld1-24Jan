@@ -130,7 +130,17 @@ public class Client {
 
 
 
-        Collections.sort(ll,new StudentPSPComparator());
+//        Comparator<Student> comp = new Comparator<Student>() {
+//            @Override
+//            public int compare(Student o1, Student o2) {
+//                return 0;
+//            }
+//        }
+
+//        Collections.sort(ll,new StudentPSPComparator());
+        Collections.sort(ll,(o1,o2)->{
+            return (int)(o1.psp-o2.psp);
+        });
 
         ArrayList<Integer> al = new ArrayList();
 
