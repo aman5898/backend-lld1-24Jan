@@ -1,9 +1,7 @@
 package org.scaler.LambdasAndStreams;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import javax.swing.text.html.Option;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -166,24 +164,118 @@ public class Client {
 //        List<Student> l3 = list1.stream().filter(e->e.psp>50).collect(Collectors.toList());
 //        System.out.println(l3);
 
-        List<Integer> l2 = List.of(5 , 10 ,2 ,1 ,16 , 3 ,8 , 1 , 2 , 2);
-
-//        Predicate<Integer> predicate = (e)->{
-//            return e%2==0;
+//        List<Integer> l2 = List.of(5 , 10 ,2 ,1 ,16 , 3 ,8 , 1 , 2 , 2);
+//
+////        Predicate<Integer> predicate = (e)->{
+////            return e%2==0;
+////        };
+//
+//        Predicate<Integer> predicate = new Predicate<Integer>() {
+//            @Override
+//            public boolean test(Integer integer) {
+//                return false;
+//            }
 //        };
+//
+//        List<Integer> l3 = l2.stream().filter(predicate).map(e->{
+//            return e*e;
+//        }).collect(Collectors.toList());
+//
+//        System.out.println(l3);
 
-        Predicate<Integer> predicate = new Predicate<Integer>() {
-            @Override
-            public boolean test(Integer integer) {
-                return false;
-            }
-        };
+//        List<Integer> l2 = List.of(5 , 10 ,2 ,1 ,16 , 3 ,8 , 1 , 2 , 2);
+//
+//        int count = (int)l2.stream().filter(e->{
+//            System.out.println("Inside Filter"+e);
+//            return e%2==0;
+//        }).count();
+////
+////        System.out.println(count);
+//
+//        Stream<Integer>s1 = l2.stream().map(e->{
+//            System.out.println("Inside Map"+e);
+//            return e*e;
+//        });
+//
+//        int count = (int)s1.count();
+//
+//        System.out.println(count);
 
-        List<Integer> l3 = l2.stream().filter(predicate).map(e->{
-            return e*e;
+
+//        List<Integer> l2 = List.of(50 , 10 ,2 ,1 ,16 , 3 ,8 , 1 , 2 , 2);
+
+//        Optional<Integer> optional = l2.stream().filter(elem->{
+//            System.out.println("Filtering "+elem);
+//            return elem%2==0;
+//        }).map(elem->{
+//            System.out.println("Mapping "+elem);
+//            return elem*elem;
+//        }).findFirst();
+//
+//        if(optional.isPresent()){
+//            System.out.println(optional.get());
+//        }
+
+
+
+//        List<Integer>Integerl3 = l2.stream()
+//                .distinct()
+//                .filter((elem)-> elem%2==0)
+//                .map(elem->{return elem*elem;})
+//                .sorted((o1,o2)->{return o2-o1;})
+//                .collect(Collectors.toList());
+//
+//        System.out.println(l3);
+
+//        reduce:- It's a terminal function.
+//        It tries to converge your whole stream into a single element based on some logic
+
+        List<Integer> l2 = List.of(50 , 10 ,2 ,1 ,16 , 3 ,8 , 1 , 2 , 2);
+//        find sum of a list
+//        int sum = 0;
+//        for(Integer elem:l2){
+//            sum+=elem;
+//        }
+
+
+        // Aggregate of SQl
+        Integer x2 = l2.stream().reduce(0,(cur_sum,elem)->{
+            cur_sum += elem;
+            return cur_sum;
+        });
+
+        System.out.println(x2);
+
+        // Try calculating max from reduce
+
+        List<List<Integer>> listOfLists = Arrays.asList(
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(4, 5),
+                Arrays.asList(6, 7, 8)
+        );
+
+        System.out.println(listOfLists);
+
+        List<Integer> ans = listOfLists.stream().flatMap(elem->{
+                return elem.stream();
         }).collect(Collectors.toList());
 
-        System.out.println(l3);
+        System.out.println(ans);
+
+        List<Integer> ans2 = listOfLists.stream().flatMap(elem->{
+            return elem.stream().map(elem1 -> elem1*elem1);
+        }).collect(Collectors.toList());
+
+        System.out.println(ans2);
+
+
+
+
+
+
+
+
+
 
 
 
